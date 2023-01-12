@@ -1,5 +1,5 @@
 # Windows Shutdown From Sleep
-This utility uses a task scheduler and PowerShell to enable you to make your Windows machine shut down after sleeping for a specific time.
+This utility uses the task scheduler and PowerShell to enable you to make your Windows machine shut down after sleeping for a specific time.
 
 ## What does the script do?
 File set_shutdown.ps1 listens for changes in the machine's power state. If it registers that the device is about to go to sleep, it sets up a wake-up task with a shutdown as its action. If you wake it up before the task begins, the task gets disabled and won't run.
