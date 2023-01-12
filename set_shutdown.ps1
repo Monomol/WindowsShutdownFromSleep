@@ -1,4 +1,5 @@
 # This has to run with administrator priviliges
+# This code can be easily modified for other power states. For further info see: https://powershell.one/wmi/root/cimv2/win32_powermanagementevent
 
 $config = Get-Content "settings.ini" | ConvertFrom-StringData
 
