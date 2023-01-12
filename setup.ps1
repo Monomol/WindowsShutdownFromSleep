@@ -5,7 +5,7 @@ $script_path = Join-Path -Path $PSScriptRoot -ChildPath $config.PSScriptName
 # Common attributes
 $principal = $principal = New-ScheduledTaskPrincipal -UserID "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
 
-# Settings on default contain some unnecessary settings, which may be unwanted for some (make sure you check them yourself in task manager and edit them to fit your use case)
+# Task settings on default contain some unnecessary settings, which may be unwanted (make sure you check them yourself in task manager and edit them to fit your use case)
 
 # Registration of sleep shutdown script
 $script_action = New-ScheduledTaskAction -Execute "C:\Windows\System32\shutdown.exe" -Argument "/s"
