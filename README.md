@@ -20,6 +20,5 @@ File set_shutdown.ps1 listens for changes in the machine's power state. If it re
 3. Either manually run the task ending with "Daemon" in the task scheduler or restart your computer
 
 ## Disclaimer
-I renounce any responsibility for any damages (most likely loss of your data) caused by my code. I created this with the best intentions, but I cannot guarantee this code works the way intended. Use it at your own risk.\
-This code used to be run manually, and this automated version has not been that thoroughly tested.\
-Feel free to report any bugs you find or propose changes.
+* I renounce any responsibility for any damages (most likely loss of your data) caused by my code. I created this with the best intentions, but I cannot guarantee this code works the way intended. Use it at your own risk.
+* This code used to be run manually, and this automated version has not been that thoroughly tested.Feel free to report any bugs you find or propose changes.
