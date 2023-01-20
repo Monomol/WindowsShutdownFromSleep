@@ -6,8 +6,8 @@ $config = Get-Content "settings.ini" | ConvertFrom-StringData
 $query = "SELECT EventType FROM Win32_PowerManagementEvent"
 $eventWatcher = New-Object System.Management.ManagementEventWatcher($query)
 
-$__var = 1
-while ($__var -ne 0) {
+# Could be likely rewritten with Register-ObjectEvent
+while ($true) {
     $event = $eventWatcher.waitForNextEvent()
     
     # System goes to sleep
