@@ -8,17 +8,17 @@ $eventWatcher = New-Object System.Management.ManagementEventWatcher($query)
 
 # Could be likely rewritten with Register-ObjectEvent
 while ($true) {
-    $event = $eventWatcher.waitForNextEvent()
+    $PWevent = $eventWatcher.waitForNextEvent()
     
     # System goes to sleep
-    if ($event."EventType" -eq 4) {
+    if ($PWevent."EventType" -eq 4) {
         $time = New-ScheduledTaskTrigger -Once -At ((Get-Date).AddMinutes($config.Delay))
         Set-ScheduledTask -TaskName $config.TaskName -Trigger $time
         Enable-ScheduledTask -TaskName $config.TaskName
     }
 
     # System wakes up
-    elseif ($event."EventType" -eq 7) {
+    elseif ($PWevent."EventType" -eq 7) {
         Disable-ScheduledTask -TaskName $config.TaskName
     }
 }
