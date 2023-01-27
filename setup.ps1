@@ -1,6 +1,7 @@
 $config = Get-Content "settings.ini" | ConvertFrom-StringData
 
-$script_path = Join-Path -Path $PSScriptRoot -ChildPath $config.PSScriptName
+$script_name = "set_shutdown.ps1"
+$script_path = Join-Path -Path $PSScriptRoot -ChildPath $script_name
 
 # Common attributes
 $principal = $principal = New-ScheduledTaskPrincipal -UserID "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest

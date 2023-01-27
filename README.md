@@ -12,7 +12,6 @@ File set_shutdown.ps1 listens for changes in the machine's power state. If it re
 * Following settings are located in settings.ini (changes are optional, default values are supplied)
 * **Delay** is the time (in whole minutes) for which the machine has to sleep to be turned off
 * **TaskName** is used to derive the name of the newly created tasks
-* **PSScriptName** (in case you rename the script, change this variable)
 
 ## Setup
 1. Clone this repository to a desired location
