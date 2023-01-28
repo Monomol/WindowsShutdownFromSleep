@@ -1,4 +1,4 @@
-$config = Get-Content "settings.ini" | ConvertFrom-StringData
+$config = Get-Content "settings.ini" | Where-Object {$_ -notmatch ";"} | ConvertFrom-StringData
 
 $script_name = "set_shutdown.ps1"
 $script_path = Join-Path -Path $PSScriptRoot -ChildPath $script_name
