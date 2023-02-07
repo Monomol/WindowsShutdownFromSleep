@@ -1,7 +1,7 @@
 # This has to run with administrator priviliges
 # This code can be easily modified for other power states. For further info see: https://powershell.one/wmi/root/cimv2/win32_powermanagementevent
 
-$config = Get-Content "settings.ini" | Where-Object {$_ -notmatch ";"} | ConvertFrom-StringData
+$config = Get-Content (Join-Path -Path $PSScriptRoot -ChildPath "settings.ini") | Where-Object {$_ -notmatch ";"} | ConvertFrom-StringData
 
 $query = "SELECT EventType FROM Win32_PowerManagementEvent"
 $eventWatcher = New-Object System.Management.ManagementEventWatcher($query)
