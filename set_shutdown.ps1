@@ -1,6 +1,7 @@
 # This has to run with administrator priviliges
 # This code can be easily modified for other power states. For further info see: https://powershell.one/wmi/root/cimv2/win32_powermanagementevent
 
+# TODO: This gets loaded only once (seem to not even correctly load at startup) - you have to rerun the script in task shceduler if settings are changed in settings.ini
 $config = Get-Content (Join-Path -Path $PSScriptRoot -ChildPath "settings.ini") | Where-Object {$_ -notmatch ";"} | ConvertFrom-StringData
 
 $query = "SELECT EventType FROM Win32_PowerManagementEvent"
