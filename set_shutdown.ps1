@@ -1,16 +1,16 @@
 # This has to run with administrator priviliges
 # This code can be easily modified for other power states. For further info see: https://powershell.one/wmi/root/cimv2/win32_powermanagementevent
 
-# TODO: This gets loaded only once (seem to not even correctly load at startup) - you have to rerun the script in task shceduler if settings are changed in settings.ini
-$config = Get-Content (Join-Path -Path $PSScriptRoot -ChildPath "settings.ini") | Where-Object {$_ -notmatch ";"} | ConvertFrom-StringData
-
 $query = "SELECT EventType FROM Win32_PowerManagementEvent"
 $eventWatcher = New-Object System.Management.ManagementEventWatcher($query)
 
 # Could be likely rewritten with Register-ObjectEvent
 while ($true) {
     $PWevent = $eventWatcher.waitForNextEvent()
-    
+
+    # This ensures the newest version of config will be loaded. Make sure you don't change the TaskName in settings without clearing task scheduler and rerunning setup.ps1!
+    $config = Get-Content (Join-Path -Path $PSScriptRoot -ChildPath "settings.ini") | Where-Object {$_ -notmatch ";"} | ConvertFrom-StringData
+
     # System goes to sleep
     if ($PWevent."EventType" -eq 4) {
         $time = New-ScheduledTaskTrigger -Once -At ((Get-Date).AddMinutes($config.Delay))
